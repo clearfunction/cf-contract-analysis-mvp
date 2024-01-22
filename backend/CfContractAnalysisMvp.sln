@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CfContractAnalysisMvp.Api", "src\sites\CfContractAnalysisMvp.Api\CfContractAnalysisMvp.Api.csproj", "{41FBAFEB-0B7C-49A9-9166-D8E6DBFA60F5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E6123B12-8A11-46D0-9DF7-27139FD365D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0618405D-6A62-457B-A6A1-8A6FF8EE8794}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CfContractAnalysisMvp.UnitTests", "tests\CfContractAnalysisMvp.UnitTests\CfContractAnalysisMvp.UnitTests.csproj", "{DE65C922-3726-4F8A-B7E2-E0ACA5336DE2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sites", "sites", "{F1670BE5-53D3-4E3C-8316-B879E7C24668}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{41FBAFEB-0B7C-49A9-9166-D8E6DBFA60F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41FBAFEB-0B7C-49A9-9166-D8E6DBFA60F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41FBAFEB-0B7C-49A9-9166-D8E6DBFA60F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41FBAFEB-0B7C-49A9-9166-D8E6DBFA60F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE65C922-3726-4F8A-B7E2-E0ACA5336DE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE65C922-3726-4F8A-B7E2-E0ACA5336DE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE65C922-3726-4F8A-B7E2-E0ACA5336DE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE65C922-3726-4F8A-B7E2-E0ACA5336DE2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DE65C922-3726-4F8A-B7E2-E0ACA5336DE2} = {0618405D-6A62-457B-A6A1-8A6FF8EE8794}
+		{F1670BE5-53D3-4E3C-8316-B879E7C24668} = {E6123B12-8A11-46D0-9DF7-27139FD365D6}
+		{41FBAFEB-0B7C-49A9-9166-D8E6DBFA60F5} = {F1670BE5-53D3-4E3C-8316-B879E7C24668}
+	EndGlobalSection
+EndGlobal
