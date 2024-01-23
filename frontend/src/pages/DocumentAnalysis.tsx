@@ -31,7 +31,7 @@ const DocumentAnalysis = () => {
     formData.append("file", file);
 
     axios
-      .post("https://localhost:7254/api/analyze-document", formData, {
+      .post("https://cf-contract-analysis-mvp.azurewebsites.net/api/analyze-document", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

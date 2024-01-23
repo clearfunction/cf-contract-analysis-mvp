@@ -18,6 +18,13 @@ public class CfContractAnalysisMvpController : ControllerBase
         _logger = logger;
         _contractAnalysisService = contractAnalysisService;
     }
+    
+    [HttpGet]
+    [Route("health-status")]
+    public IActionResult HealthStatus()
+    {
+        return Ok();
+    }
 
     [HttpPost]
     [Route("analyze-document")]
