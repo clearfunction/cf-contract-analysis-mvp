@@ -12,26 +12,85 @@ const DocumentResults: React.FC<props> = ({ analysisResults }) => {
       <div className="container m-10">
         <p className="mb-5 text-center text-xl">Found Key Information:</p>
         <div className="relative p-10 rounded-xl overflow-auto bg-slate-800 text-center">
-          <h2 className="p-5 text-2xl font-bold underline">Buyer Name</h2>
-          <p className="text-base max-w-xl mx-auto">
-            {analysisResults.buyerName ? analysisResults.buyerName : "No Value Found"}
-          </p>
-          <h2 className="p-5 text-2xl font-bold underline">Seller Name</h2>
-          <p className="text-base max-w-xl mx-auto">
-            {analysisResults.sellerName ? analysisResults.sellerName : "No Value Found"}
-          </p>
-          <h2 className="p-5 text-2xl font-bold underline">Property Address</h2>
-          <p className="text-base max-w-xl mx-auto">
-            {analysisResults.propertyAddress ? analysisResults.propertyAddress : "No Value Found"}
-          </p>
-          <h2 className="p-5 text-2xl font-bold underline">Contract Amount</h2>
-          <p className="text-base max-w-xl mx-auto">
-            {analysisResults.contractAmount ? analysisResults.contractAmount : "No Value Found"}
-          </p>
-          <h2 className="p-5 text-2xl font-bold underline">Contract Date</h2>
-          <p className="text-base max-w-xl mx-auto">
-            {analysisResults.contractDate ? analysisResults.contractDate : "No Value Found"}
-          </p>
+          <h2 className="text-2xl font-bold underline">Buyer Name</h2>
+          {analysisResults.buyerName.length === 0 ? (
+            <p className="text-xs mt-2 mb-5">No key-value results for Buyer Name were found.</p>
+          ) : (
+            <>
+              <p className="text-xs mt-2 mb-5">Found the following key-value results for Buyer Name:</p>
+              {analysisResults.buyerName?.map((result: any, index: number) => {
+                return (
+                  <p key={index} className="text-base">
+                    <b>Key:</b> {result.key} <b>Value:</b> {result.value}
+                  </p>
+                );
+              })}
+            </>
+          )}
+
+          <h2 className="mt-10 text-2xl font-bold underline">Seller Name</h2>
+          {analysisResults.sellerName.length === 0 ? (
+            <p className="text-xs mt-2 mb-5">No key-value results for Seller Name were found.</p>
+          ) : (
+            <>
+              <p className="text-xs mt-2 mb-5">Found the following key-value results for Seller Name:</p>
+              {analysisResults.sellerName?.map((result: any, index: number) => {
+                return (
+                  <p key={index} className="text-base">
+                    <b>Key:</b> {result.key} <b>Value:</b> {result.value}
+                  </p>
+                );
+              })}
+            </>
+          )}
+
+          <h2 className="mt-10 text-2xl font-bold underline">Property Address</h2>
+          {analysisResults.propertyAddress.length === 0 ? (
+            <p className="text-xs mt-2 mb-5">No key-value results for Property Address were found.</p>
+          ) : (
+            <>
+              <p className="text-xs mt-2 mb-5">Found the following key-value results for Property Address:</p>
+              {analysisResults.propertyAddress?.map((result: any, index: number) => {
+                return (
+                  <p key={index} className="text-base">
+                    <b>Key:</b> {result.key} <b>Value:</b> {result.value}
+                  </p>
+                );
+              })}
+            </>
+          )}
+
+          <h2 className="mt-10 text-2xl font-bold underline">Contract Amount</h2>
+          {analysisResults.contractAmount.length === 0 ? (
+            <p className="text-xs mt-2 mb-5">No key-value results for Contract Amount were found.</p>
+          ) : (
+            <>
+              <p className="text-xs mt-2 mb-5">Found the following key-value results for Contract Amount:</p>
+              {analysisResults.contractAmount?.map((result: any, index: number) => {
+                return (
+                  <p key={index} className="text-base">
+                    <b>Key:</b> {result.key} <b>Value:</b> {result.value}
+                  </p>
+                );
+              })}
+            </>
+          )}
+
+          <h2 className="mt-10 text-2xl font-bold underline">Contract Date</h2>
+          {analysisResults.contractDate.length === 0 ? (
+            <p className="text-xs mt-2 mb-5">No key-value results for Contract Date were found.</p>
+          ) : (
+            <>
+              <p className="text-xs mt-2 mb-5">Found the following key-value results for Contract Date:</p>
+              {analysisResults.contractDate?.map((result: any, index: number) => {
+                return (
+                  <p key={index} className="text-base">
+                    <b>Key:</b> {result.key} <b>Value:</b> {result.value}
+                  </p>
+                );
+              })}
+            </>
+          )}
 
           <button
             onClick={() => setDropDownExpanded(!dropDownExpanded)}

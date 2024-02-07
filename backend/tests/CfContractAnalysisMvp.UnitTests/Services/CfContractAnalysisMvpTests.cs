@@ -2,7 +2,6 @@ using System.IO;
 using System.Threading.Tasks;
 using Azure.AI.FormRecognizer.DocumentAnalysis;
 using CfContractAnalysisMvp.Api.Interfaces;
-using CfContractAnalysisMvp.Api.Models.Contract;
 using CfContractAnalysisMvp.Api.Services;
 using Microsoft.Extensions.Configuration;
 using NSubstitute;
@@ -14,13 +13,15 @@ namespace CfContractAnalysisMvp.UnitTests.Services;
 public class CfContractAnalysisMvpTests
 {
     private readonly IConfiguration _configuration;
+    private readonly IKeyTermService _keyTermService;
 
     public CfContractAnalysisMvpTests()
     {
         _configuration = Substitute.For<IConfiguration>();
+        _keyTermService = Substitute.For<IKeyTermService>();
     }
 
-    private IContractAnalysisService Sut => new ContractAnalysisService(_configuration);
+    private IContractAnalysisService Sut => new ContractAnalysisService(_configuration, _keyTermService);
 
     [Fact]
     public async Task Should_fail_null_values()
@@ -28,21 +29,6 @@ public class CfContractAnalysisMvpTests
         string fileName = "../../../Files/testResult.json";
         string jsonString = await File.ReadAllTextAsync(fileName);
         AnalyzeResult testResult = JsonSerializer.Deserialize<AnalyzeResult>(jsonString)!;
-        
-        // var formattedResult = new ContractAnalysisResult();
-        // foreach (var doc in testResult.Documents)
-        // {
-        //     foreach (var fieldKeyValuePair in doc.Fields)
-        //     {
-        //         // CreateFieldResults(fieldKeyValuePair, formattedResult.Results);
-        //         ContractFieldResult x = Sut.CreateFieldResultsTest(fieldKeyValuePair.Key, fieldKeyValuePair.Value);
-        //     }
-        // }
-        
-        // '/Users/kaden/dev/cf/cf-contract-analysis-mvp/backend/tests/CfContractAnalysisMvp.UnitTests/bin/Debug/Files/testResult.json'.
-        
-        // var result = await Sut.AnalyzeDocument(null);
-        // result.ShouldBeEquivalentTo(new List<DocumentKeyValuePair>() );
     }
 
     // [Theory]

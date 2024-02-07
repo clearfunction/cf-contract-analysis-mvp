@@ -10,10 +10,12 @@ namespace CfContractAnalysisMvp.Api.Services;
 public class ContractAnalysisService : IContractAnalysisService
 {
     private readonly IConfiguration _configuration;
+    private readonly IKeyTermService _keyTermService;
     
-    public ContractAnalysisService(IConfiguration configuration)
+    public ContractAnalysisService(IConfiguration configuration, IKeyTermService keyTermService)
     {
         _configuration = configuration;
+        _keyTermService = keyTermService;
     }
 
     public async Task<AnalyzeResult?> AnalyzeDocument(IFormFile file, string model)
@@ -39,13 +41,14 @@ public class ContractAnalysisService : IContractAnalysisService
         var analysisResult = new DocumentAnalysisResult();
         foreach (DocumentKeyValuePair kvp in analyzeResult.KeyValuePairs)
         {
-            IdentifyKeyTerm(kvp, analysisResult);
             analysisResult.KeyValuePairsList.Add(new Models.Document.DocumentKeyValuePair()
             {
                 Key = kvp.Key.Content,
                 Value = kvp.Value?.Content ?? "No Value"
             });
         }
+        
+        _keyTermService.FindKeyTerms(analysisResult);
 
         return analysisResult;
     }
@@ -59,69 +62,12 @@ public class ContractAnalysisService : IContractAnalysisService
         {
             foreach (var fieldKeyValuePair in doc.Fields)
             {
-                
                 ContractFieldResult x = CreateFieldResults(fieldKeyValuePair.Key, fieldKeyValuePair.Value);
                 formattedResult.Results.Add(x);
             }
         }
         
         return formattedResult;
-    }
-
-    private void IdentifyKeyTerm(DocumentKeyValuePair keyValuePair, DocumentAnalysisResult analysisResult)
-    {
-        List<string> keyTerms = new List<string>() { "buyer", "seller", "address", "amount", "date" };
-        var index = 0;
-        foreach (var term in keyTerms)
-        {
-            if (keyValuePair.Key.Content.IndexOf(term, StringComparison.OrdinalIgnoreCase) >= 0)
-            {
-                switch (index)
-                {
-                    case 0:
-                        if ((string.IsNullOrWhiteSpace(analysisResult.BuyerName) || keyValuePair.Key.Content.Equals(term, StringComparison.OrdinalIgnoreCase)) && keyValuePair.Value != null)
-                        {
-                            analysisResult.BuyerName = keyValuePair.Value.Content;
-                        }
-
-                        return;
-                    
-                    case 1:
-                        if ((string.IsNullOrWhiteSpace(analysisResult.SellerName) || keyValuePair.Key.Content.Equals(term, StringComparison.OrdinalIgnoreCase)) && keyValuePair.Value != null)
-                        {
-                            analysisResult.SellerName = keyValuePair.Value.Content;
-                        }
-
-                        return;
-                    
-                    case 2:
-                        if ((string.IsNullOrWhiteSpace(analysisResult.PropertyAddress) || keyValuePair.Key.Content.Equals(term, StringComparison.OrdinalIgnoreCase)) && keyValuePair.Value != null)
-                        {
-                            analysisResult.PropertyAddress = keyValuePair.Value.Content;
-                        }
-
-                        return;
-                    
-                    case 3:
-                        if ((string.IsNullOrWhiteSpace(analysisResult.ContractAmount) || keyValuePair.Key.Content.Equals(term, StringComparison.OrdinalIgnoreCase)) && keyValuePair.Value != null)
-                        {
-                            analysisResult.ContractAmount = keyValuePair.Value.Content;
-                        }
-
-                        return;
-                    
-                    case 4:
-                        if ((string.IsNullOrWhiteSpace(analysisResult.ContractDate) || keyValuePair.Key.Content.Equals(term, StringComparison.OrdinalIgnoreCase)) && keyValuePair.Value != null)
-                        {
-                            analysisResult.ContractAmount = keyValuePair.Value.Content;
-                        }
-
-                        return;
-                }
-            }
-
-            index++;
-        }
     }
 
     private ContractFieldResult CreateFieldResults(string documentKey, DocumentField documentField)

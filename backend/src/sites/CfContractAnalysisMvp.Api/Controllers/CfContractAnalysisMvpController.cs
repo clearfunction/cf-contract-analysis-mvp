@@ -34,7 +34,8 @@ public class CfContractAnalysisMvpController : ControllerBase
 
         var analysis = await _contractAnalysisService.AnalyzeDocument(file, "prebuilt-document");
         var result = _contractAnalysisService.FormatDocumentAnalysis(analysis);
-        await SaveJsonFile(documentResult: result);
+        
+        // await SaveJsonFile(documentResult: result);
         return Ok(result);
     }
     
@@ -46,6 +47,8 @@ public class CfContractAnalysisMvpController : ControllerBase
 
         var analysis = await _contractAnalysisService.AnalyzeDocument(file, "prebuilt-contract");
         var result = _contractAnalysisService.FormatContractAnalysis(analysis);
+        
+        // await SaveJsonFile(contractResult: result);
         return Ok(result);
     }
 
