@@ -4,7 +4,8 @@ using CfContractAnalysisMvp.Api.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddTransient<IContractAnalysisService, ContractAnalysisService>();
+builder.Services.AddTransient<IAzureDocumentAiAnalysisService, AzureDocumentAiAnalysisService>();
+builder.Services.AddTransient<IOpenAiGptService, OpenAiGptService>();
 builder.Services.AddTransient<IKeyTermService, KeyTermService>();
 
 builder.Services.AddControllers();

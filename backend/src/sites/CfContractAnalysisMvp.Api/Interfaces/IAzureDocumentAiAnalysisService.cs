@@ -4,7 +4,7 @@ using CfContractAnalysisMvp.Api.Models.Document;
 
 namespace CfContractAnalysisMvp.Api.Interfaces;
 
-public interface IContractAnalysisService
+public interface IAzureDocumentAiAnalysisService
 {
     public Task<AnalyzeResult?> AnalyzeDocument(IFormFile input, string model);
 

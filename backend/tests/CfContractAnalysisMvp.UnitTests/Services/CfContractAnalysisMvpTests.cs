@@ -21,7 +21,7 @@ public class CfContractAnalysisMvpTests
         _keyTermService = Substitute.For<IKeyTermService>();
     }
 
-    private IContractAnalysisService Sut => new ContractAnalysisService(_configuration, _keyTermService);
+    private IAzureDocumentAiAnalysisService Sut => new AzureDocumentAiAnalysisService(_configuration, _keyTermService);
 
     [Fact]
     public async Task Should_fail_null_values()

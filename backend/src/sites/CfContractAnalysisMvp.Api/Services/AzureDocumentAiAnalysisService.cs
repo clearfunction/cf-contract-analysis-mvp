@@ -7,12 +7,12 @@ using DocumentKeyValuePair = Azure.AI.FormRecognizer.DocumentAnalysis.DocumentKe
 
 namespace CfContractAnalysisMvp.Api.Services;
 
-public class ContractAnalysisService : IContractAnalysisService
+public class AzureDocumentAiAnalysisService : IAzureDocumentAiAnalysisService
 {
     private readonly IConfiguration _configuration;
     private readonly IKeyTermService _keyTermService;
     
-    public ContractAnalysisService(IConfiguration configuration, IKeyTermService keyTermService)
+    public AzureDocumentAiAnalysisService(IConfiguration configuration, IKeyTermService keyTermService)
     {
         _configuration = configuration;
         _keyTermService = keyTermService;

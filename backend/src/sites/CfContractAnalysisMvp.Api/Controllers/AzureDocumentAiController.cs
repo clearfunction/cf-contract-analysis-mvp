@@ -7,16 +7,16 @@ using Microsoft.AspNetCore.Mvc;
 namespace CfContractAnalysisMvp.Api.Controllers;
 
 [ApiController]
-[Route("api")]
-public class CfContractAnalysisMvpController : ControllerBase
+[Route("api/azure")]
+public class AzureDocumentAiController : ControllerBase
 {
-    private readonly ILogger<CfContractAnalysisMvpController> _logger;
-    private readonly IContractAnalysisService _contractAnalysisService;
+    private readonly ILogger<AzureDocumentAiController> _logger;
+    private readonly IAzureDocumentAiAnalysisService _azureDocumentAiAnalysisService;
 
-    public CfContractAnalysisMvpController(ILogger<CfContractAnalysisMvpController> logger, IContractAnalysisService contractAnalysisService)
+    public AzureDocumentAiController(ILogger<AzureDocumentAiController> logger, IAzureDocumentAiAnalysisService azureDocumentAiAnalysisService)
     {
         _logger = logger;
-        _contractAnalysisService = contractAnalysisService;
+        _azureDocumentAiAnalysisService = azureDocumentAiAnalysisService;
     }
     
     [HttpGet]
@@ -32,8 +32,8 @@ public class CfContractAnalysisMvpController : ControllerBase
     {
         ArgumentNullException.ThrowIfNull(file);
 
-        var analysis = await _contractAnalysisService.AnalyzeDocument(file, "prebuilt-document");
-        var result = _contractAnalysisService.FormatDocumentAnalysis(analysis);
+        var analysis = await _azureDocumentAiAnalysisService.AnalyzeDocument(file, "prebuilt-document");
+        var result = _azureDocumentAiAnalysisService.FormatDocumentAnalysis(analysis);
         
         // await SaveJsonFile(documentResult: result);
         return Ok(result);
@@ -45,8 +45,8 @@ public class CfContractAnalysisMvpController : ControllerBase
     {
         ArgumentNullException.ThrowIfNull(file);
 
-        var analysis = await _contractAnalysisService.AnalyzeDocument(file, "prebuilt-contract");
-        var result = _contractAnalysisService.FormatContractAnalysis(analysis);
+        var analysis = await _azureDocumentAiAnalysisService.AnalyzeDocument(file, "prebuilt-contract");
+        var result = _azureDocumentAiAnalysisService.FormatContractAnalysis(analysis);
         
         // await SaveJsonFile(contractResult: result);
         return Ok(result);
