@@ -31,7 +31,7 @@ const ContractAnalysis = () => {
     formData.append("file", file);
 
     axios
-      .post("https://cf-contract-analysis-mvp.azurewebsites.net/api/analyze-contract", formData, {
+      .post("https://cf-contract-analysis-mvp.azurewebsites.net/api/azure/analyze-contract", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           "Access-Control-Allow-Origin": "https://cf-contract-analysis-mvp.azurewebsites.net",

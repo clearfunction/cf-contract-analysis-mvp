@@ -13,11 +13,18 @@ function Home() {
           Prebuilt Contract Model
         </a>
         <a
-          className="rounded-md bg-sky-500/100 hover:bg-sky-500/50 p-5 text-xl w-3/4 md:w-1/3 max-w-xl"
+          className="rounded-md bg-sky-500/100 hover:bg-sky-500/50 p-5 mb-10 text-xl w-3/4 md:w-1/3 max-w-xl"
           href="/analyze-document"
           rel="noopener noreferrer"
         >
           Prebuilt Document Model
+        </a>
+        <a
+          className="rounded-md bg-sky-500/100 hover:bg-sky-500/50 p-5 text-xl w-3/4 md:w-1/3 max-w-xl"
+          href="/ask-gpt"
+          rel="noopener noreferrer"
+        >
+          Ask GPT
         </a>
       </header>
     </div>

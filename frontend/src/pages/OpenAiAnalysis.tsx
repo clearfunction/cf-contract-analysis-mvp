@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import axios, { AxiosResponse } from "axios";
-import DocumentResults from "../components/DocumentResults";
 
-const DocumentAnalysis = () => {
+const OpenAiAnalysis = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [file, setFile] = useState<any>();
@@ -31,7 +30,7 @@ const DocumentAnalysis = () => {
     formData.append("file", file);
 
     axios
-      .post("https://cf-contract-analysis-mvp.azurewebsites.net/api/azure/analyze-document", formData, {
+      .post("https://cf-contract-analysis-mvp.azurewebsites.net/api/open-ai/analyze-contract", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -77,9 +76,19 @@ const DocumentAnalysis = () => {
         Analyze Contract
       </button>
       {errorMessage !== "" && <p className="text-base text-red-400">{errorMessage}</p>}
-      {analysisResponse && <DocumentResults analysisResults={analysisResponse.data} />}
+      {analysisResponse && (
+        <>
+          {analysisResponse.data?.map((result: any, index: number) => {
+            return (
+              <p key={index} className="text-base my-10">
+                {result}
+              </p>
+            );
+          })}
+        </>
+      )}
     </div>
   );
 };
 
-export default DocumentAnalysis;
+export default OpenAiAnalysis;
