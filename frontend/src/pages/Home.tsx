@@ -24,7 +24,7 @@ function Home() {
           href="/ask-gpt"
           rel="noopener noreferrer"
         >
-          Ask GPT
+          OpenAI Model
         </a>
       </header>
     </div>

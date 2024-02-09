@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios, { AxiosResponse } from "axios";
+import { CopyBlock, dracula } from "react-code-blocks";
 
 const OpenAiAnalysis = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -59,7 +60,7 @@ const OpenAiAnalysis = () => {
       <a href="/" className="absolute top-6 left-6 text-sm font-bold underline">
         Return Home
       </a>
-      <h1 className="text-3xl font-bold my-12 text-white">Document Analysis</h1>
+      <h1 className="text-3xl font-bold my-12 text-white">OpenAI Analysis</h1>
       <div className="flex flex-row items-center justify-center">
         <div className="mx-auto max-w-xs">
           <input
@@ -80,9 +81,17 @@ const OpenAiAnalysis = () => {
         <>
           {analysisResponse.data?.map((result: any, index: number) => {
             return (
-              <p key={index} className="text-base my-10">
-                {result}
-              </p>
+              <div className="text-base w-3/4 max-w-4x mb-10">
+                <CopyBlock
+                  key={index}
+                  text={result}
+                  theme={dracula}
+                  customStyle={{ padding: "2em", "border-radius": "2em" }}
+                  language={"text"}
+                  showLineNumbers={false}
+                  wrapLongLines
+                />
+              </div>
             );
           })}
         </>
