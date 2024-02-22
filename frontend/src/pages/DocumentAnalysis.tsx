@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios, { AxiosResponse } from "axios";
 import DocumentResults from "../components/DocumentResults";
+import { dotnetApiUrl } from "../models/constants";
 
 const DocumentAnalysis = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -31,7 +32,7 @@ const DocumentAnalysis = () => {
     formData.append("file", file);
 
     axios
-      .post("https://cf-contract-analysis-mvp.azurewebsites.net/api/azure/analyze-document", formData, {
+      .post(`${dotnetApiUrl}/api/azure/analyze-document`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

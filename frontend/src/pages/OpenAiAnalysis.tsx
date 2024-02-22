@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios, { AxiosResponse } from "axios";
 import { CopyBlock, dracula } from "react-code-blocks";
+import { dotnetApiUrl } from "../models/constants";
 
 const OpenAiAnalysis = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -31,7 +32,7 @@ const OpenAiAnalysis = () => {
     formData.append("file", file);
 
     axios
-      .post("https://cf-contract-analysis-mvp.azurewebsites.net/api/open-ai/analyze-contract", formData, {
+      .post(`${dotnetApiUrl}/api/open-ai/analyze-contract`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

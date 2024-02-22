@@ -98,7 +98,7 @@
       <option name="AZURE_SQL_DATABASE_COLLATION" value="SQL_Latin1_General_CP1_CI_AS" />
       <method v="2" />
     </configuration>
-    <configuration name="Palindrome.Api" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+    <configuration name="CfContractAnalysisMvp.Api" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/src/sites/CfContractAnalysisMvp.Api/CfContractAnalysisMvp.Api.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net6.0" />
       <option name="LAUNCH_PROFILE_NAME" value="Palindrome.Api" />
