@@ -27,7 +27,7 @@ public class OpenAiGptService : IOpenAiGptService
             chat.RequestParameters.Temperature = 0;
             
             // use azure ai to get document paragraphs
-            var document = await _azureDocumentAiAnalysisService.AnalyzeDocument(file, "prebuilt-document");
+            var document = await _azureDocumentAiAnalysisService.AnalyzeDocument(file, "prebuilt-read");
             var paragraphs = document?.Paragraphs;
             if (paragraphs is null)
             {
